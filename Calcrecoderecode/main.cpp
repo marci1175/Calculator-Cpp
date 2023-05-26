@@ -4,7 +4,7 @@
 #include <vector>
 #include <cmath>
 #include <numeric>
-
+#include "Historycomp.h"
 //misc calculations
 class szamitas4
 {
@@ -12,6 +12,24 @@ public:
 	std::string boolveg;
 	std::string egyenl(double first, double second) {
 		if (first == second) {
+			boolveg = "True";
+		}
+		else {
+			boolveg = "False";
+		}
+		return boolveg;
+	}
+	std::string rj (double first, double second) {
+		if (first > second) {
+			boolveg = "True";
+		}
+		else {
+			boolveg = "False";
+		}
+		return boolveg;
+	}
+	std::string rb(double first, double second) {
+		if (first < second) {
 			boolveg = "True";
 		}
 		else {
@@ -176,7 +194,7 @@ int main() {
 		expelozmeny = exp.size();
 		for (size_t i = 0; i < exp.size() + 1; i++)
 		{
-			if (expelozmeny == i or exp[0] == "=")
+			if (expelozmeny == i or exp[0] == "=" or exp[0] == "<" or exp[0] == ">")
 			{
 				break;
 			}
@@ -233,25 +251,38 @@ int main() {
 			{
 				break;
 			}
-			if (exp[0] == "=") {
+			if (exp[0] == "=" or exp[0] == ">" or exp[0] == "<") {
 				i = 0;
 				whattoprint = 2;
 			}
 			if(exp[i] == "=")
 			{
 				boolveg = lv4.egyenl(num[i], num[i + 1]);
+				break;
+			}
+			else if (exp[i] == ">") {
+				boolveg = lv4.rj(num[i], num[i + 1]);
+				break;
+			}
+			else if (exp[i] == "<") {
+				boolveg = lv4.rb(num[i], num[i + 1]);
+				break;
 			}
 		}
-
-
+		//insert <> handling here ::
+		std::string sveg = std::to_string(veg);
+		
 		//print out veg
 		if(whattoprint == 1)
 		{
 			std::cout << "Answer : " << veg << std::endl;
+			historycomp(user_inputTEMP, sveg);
 		}
 		else if (whattoprint == 2) {
 			std::cout << "Answer : " << boolveg << std::endl;
+			historycomp(user_inputTEMP, boolveg);
 		}
+		
 		system("pause");
 		system("cls");
 	}
