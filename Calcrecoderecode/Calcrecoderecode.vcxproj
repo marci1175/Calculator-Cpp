@@ -131,6 +131,7 @@
     <ClCompile Include="Historycomp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="calculations.h" />
     <ClInclude Include="Historycomp.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

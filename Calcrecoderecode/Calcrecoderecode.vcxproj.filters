@@ -26,5 +26,8 @@
     <ClInclude Include="Historycomp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="calculations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
