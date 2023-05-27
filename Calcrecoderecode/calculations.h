@@ -81,7 +81,6 @@ private:
 		powv.push_back(1);
 		for (size_t i = 0; i < second; i++)
 		{
-			std::cout << "in";
 			veg = powv[i] * bgfirst;
 			powv.push_back(veg);
 		}
