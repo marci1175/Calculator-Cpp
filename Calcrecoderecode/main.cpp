@@ -50,22 +50,25 @@ int main() {
 				exp.push_back(user_input[i]);
 			}
 		}
-
-
 		//filter / handle bullshit inputs
-		if (exp.size() >= num.size()) {
-			std::cout << "\nSyntax error!\n";
-			system("pause");
-			system("CLS");
-			std::cout << "[Correct usage : 4 + 4 (Always separate with a space!)]\n\n";
-			continue;
+		if (exp[0] == "!") {
+
+		}
+		else if (exp.size() >= num.size()) {
+			{
+				std::cout << "\nSyntax error!\n";
+				system("pause");
+				system("CLS");
+				std::cout << "[Correct usage : 4 + 4 (Always separate with a space!)]\n\n";
+				continue;
+			}
 		}
 		if (num.size() == 1 and exp.size() == 0) {
 			veg = num[0];
 		}
 
 		std::string vegreturn = calculationengine(num, exp, whattoprint, boolveg);
-
+		std::cout << "Answer : " << vegreturn << std::endl;
 		historycomp(user_inputTEMP, vegreturn);
 		//veg or sveg
 		system("pause");

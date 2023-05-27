@@ -23,7 +23,7 @@ std::string calculationengine(std::vector <double> num, std::vector <std::string
 	int expelozmeny = exp.size();
 	for (size_t i = 0; i < exp.size() + 1; i++)
 	{
-		if (expelozmeny == i or exp.size() < i + 1 or exp[0] == "=")
+		if (expelozmeny == i)
 		{
 			break;
 		}
@@ -33,6 +33,7 @@ std::string calculationengine(std::vector <double> num, std::vector <std::string
 		//ha 1 akk fail , 0-nal van a +
 		if (exp[i] == "!")
 		{
+			std::cout << "qanyad";
 			veg = scilv2.fact(num[i]);
 			exp.erase(exp.begin() + i);
 			num.erase(num.begin() + i);
@@ -51,7 +52,7 @@ std::string calculationengine(std::vector <double> num, std::vector <std::string
 	expelozmeny = exp.size();
 	for (size_t i = 0; i < exp.size() + 1; i++)
 	{
-		if (expelozmeny == i or exp[0] == "=" or exp[0] == "<" or exp[0] == ">")
+		if (expelozmeny == i)
 		{
 			break;
 		}
@@ -78,7 +79,7 @@ std::string calculationengine(std::vector <double> num, std::vector <std::string
 	expelozmeny = exp.size();
 	for (size_t i = 0; i < exp.size() + 1; i++)
 	{
-		if (expelozmeny == i or exp[0] == "=")
+		if (expelozmeny == i)
 		{
 			break;
 		}
@@ -126,17 +127,15 @@ std::string calculationengine(std::vector <double> num, std::vector <std::string
 			break;
 		}
 	}
-	//insert <> handling here ::
 	std::string vegstoi = std::to_string(veg);
 
 	//what to return
 	if (whattoprint == 1)
 	{
-		std::cout << "Answer : " << veg << std::endl;
 		return vegstoi;
 	}
 	else if (whattoprint == 2) {
-		std::cout << "Answer : " << boolveg << std::endl;
+		vegstoi = boolveg;
 		return vegstoi;
 	}
 }
