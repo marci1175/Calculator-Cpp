@@ -17,13 +17,8 @@
 int main() {
 	int whattoprint = 1;
 	std::string boolveg;
+	std::string vegreturn;
 	while (true) {
-		double veg = 0;
-		szamitas3 lv1;
-		szamitas2 lv2;
-		sciszamitas2 scilv2;
-		szamitas4 lv4;
-
 		std::vector <std::string> user_input;
 		std::vector <double> num;
 		std::vector <std::string> exp;
@@ -51,23 +46,26 @@ int main() {
 			}
 		}
 		//filter / handle bullshit inputs
-		if (exp[0] == "!") {
 
-		}
-		else if (exp.size() >= num.size()) {
-			{
-				std::cout << "\nSyntax error!\n";
-				system("pause");
-				system("CLS");
-				std::cout << "[Correct usage : 4 + 4 (Always separate with a space!)]\n\n";
-				continue;
+		if(exp.size() > 0) {
+			if (exp[0] == "!") {
+
+			}
+			else if (exp.size() >= num.size()) {
+				{
+					std::cout << "\nSyntax error!\n";
+					system("pause");
+					system("CLS");
+					std::cout << "[Correct usage : 4 + 4 (Always separate with a space!)]\n\n";
+					continue;
+				}
 			}
 		}
 		if (num.size() == 1 and exp.size() == 0) {
-			veg = num[0];
+			vegreturn = num[0];
 		}
 
-		std::string vegreturn = calculationengine(num, exp, whattoprint, boolveg);
+		vegreturn = calculationengine(num, exp, whattoprint, boolveg);
 		std::cout << "Answer : " << vegreturn << std::endl;
 		historycomp(user_inputTEMP, vegreturn);
 		//veg or sveg

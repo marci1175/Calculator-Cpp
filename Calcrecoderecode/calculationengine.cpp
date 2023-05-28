@@ -21,14 +21,11 @@ std::string calculationengine(std::vector <double> num, std::vector <std::string
 	//Calculation engine supports : <> = + * - :
 
 	int expelozmeny = exp.size();
-	for (size_t i = 0; i < exp.size() + 1; i++)
+	for (size_t i = 0; i < exp.size(); i++)
 	{
 		if (expelozmeny == i)
 		{
 			break;
-		}
-		if (exp[0] == "!" or exp[0] == "pow") {
-			i = 0;
 		}
 		//ha 1 akk fail , 0-nal van a +
 		if (exp[i] == "!")
@@ -38,6 +35,7 @@ std::string calculationengine(std::vector <double> num, std::vector <std::string
 			exp.erase(exp.begin() + i);
 			num.erase(num.begin() + i);
 			num.insert(num.begin() + i, veg);
+			i--;
 		}
 		else if (exp[i] == "pow")
 		{
@@ -45,19 +43,17 @@ std::string calculationengine(std::vector <double> num, std::vector <std::string
 			exp.erase(exp.begin() + i);
 			num.erase(num.begin() + i, num.begin() + (i + 2));
 			num.insert(num.begin() + i, veg);
+			i--;
 		}
 	}
 	// : *
 	//re-backup exp. size
 	expelozmeny = exp.size();
-	for (size_t i = 0; i < exp.size() + 1; i++)
+	for (size_t i = 0; i < exp.size(); i++)
 	{
 		if (expelozmeny == i)
 		{
 			break;
-		}
-		if (exp[0] == ":" or exp[0] == "/" or exp[0] == "*") {
-			i = 0;
 		}
 		if (exp[i] == ":" or exp[i] == "/")
 		{
@@ -65,6 +61,7 @@ std::string calculationengine(std::vector <double> num, std::vector <std::string
 			exp.erase(exp.begin() + i);
 			num.erase(num.begin() + i, num.begin() + (i + 2));
 			num.insert(num.begin() + i, veg);
+			i--;
 		}
 		else if (exp[i] == "*")
 		{
@@ -72,19 +69,17 @@ std::string calculationengine(std::vector <double> num, std::vector <std::string
 			exp.erase(exp.begin() + i);
 			num.erase(num.begin() + i, num.begin() + (i + 2));
 			num.insert(num.begin() + i, veg);
+			i--;
 		}
 	}
 	//+ -
 	//re-backup exp. size
 	expelozmeny = exp.size();
-	for (size_t i = 0; i < exp.size() + 1; i++)
+	for (size_t i = 0; i < exp.size(); i++)
 	{
 		if (expelozmeny == i)
 		{
 			break;
-		}
-		if (exp[0] == "+" or exp[0] == "-") {
-			i = 0;
 		}
 		if (exp[i] == "-")
 		{
@@ -92,6 +87,7 @@ std::string calculationengine(std::vector <double> num, std::vector <std::string
 			exp.erase(exp.begin() + i);
 			num.erase(num.begin() + i, num.begin() + (i + 2));
 			num.insert(num.begin() + i, veg);
+			i--;
 		}
 		else if (exp[i] == "+")
 		{
@@ -99,18 +95,18 @@ std::string calculationengine(std::vector <double> num, std::vector <std::string
 			exp.erase(exp.begin() + i);
 			num.erase(num.begin() + i, num.begin() + (i + 2));
 			num.insert(num.begin() + i, veg);
+			i--;
 		}
 
 	}
 	expelozmeny = exp.size();
-	for (size_t i = 0; i < exp.size() + 1; i++)
+	for (size_t i = 0; i < exp.size(); i++)
 	{
 		if (expelozmeny == i)
 		{
 			break;
 		}
 		if (exp[0] == "=" or exp[0] == ">" or exp[0] == "<") {
-			i = 0;
 			whattoprint = 2;
 		}
 		if (exp[i] == "=")
