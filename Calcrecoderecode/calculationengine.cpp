@@ -134,4 +134,7 @@ std::string calculationengine(std::vector <double> num, std::vector <std::string
 		vegstoi = boolveg;
 		return vegstoi;
 	}
+
+
+	return 0;
 }

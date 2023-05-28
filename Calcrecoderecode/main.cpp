@@ -13,6 +13,57 @@
 //calculation engine
 #include "calculationengine.h"
 //calculation engine
+void synerr() {
+	std::cout << "Syntax error!\n";
+	system("pause");
+	system("CLS");
+}
+
+//dont touch me--------------------------------------------------------
+bool usererr(std::vector <double> num, std::vector <std::string> exp) {
+//if (exp[0] == "!")
+	bool hasfelk = false;
+	for (size_t i = 0; i < exp.size(); i++)
+	{
+		if (exp[i] == "!") {
+			hasfelk = true;
+			break;
+		}
+	}
+	for (size_t i = 0; i < exp.size(); i++)
+	{
+		if (exp[i] == "!") {
+			if (exp.size() < num.size()) {
+				return true;
+			}
+			else if (num.size() < exp.size())
+			{
+				return true;
+			}
+
+		}
+		else if (hasfelk == true) {
+			break;
+		}
+		else
+		{
+			if (num.size() == 2 and exp.size() == 1) {
+				return false;
+			}
+			else if (num.size() <= exp.size() - 1 * 2) {
+				return true;
+			}
+			else if (num.size() == exp.size()) {
+				if (hasfelk == true) {
+					break;
+				}
+				else { return true; }
+			}
+		}
+			return false;
+	}
+}
+//dont touch me--------------------------------------------------------
 
 int main() {
 	int whattoprint = 1;
@@ -37,7 +88,7 @@ int main() {
 		{
 			try
 			{
-				double numT = stof(user_input[i]);
+				double numT = stod(user_input[i]);
 				num.push_back(numT);
 			}
 			catch (const std::exception&)
@@ -47,25 +98,15 @@ int main() {
 		}
 		//filter / handle bullshit inputs
 
-		if(exp.size() > 0) {
-			if (exp[0] == "!") {
-
-			}
-			else if (exp.size() >= num.size()) {
-				{
-					std::cout << "\nSyntax error!\n";
-					system("pause");
-					system("CLS");
-					std::cout << "[Correct usage : 4 + 4 (Always separate with a space!)]\n\n";
-					continue;
-				}
-			}
-		}
-		if (num.size() == 1 and exp.size() == 0) {
-			vegreturn = num[0];
-		}
-
+		if (usererr(num, exp) == true) {
+			synerr();
+			continue;
+		};
+		
 		vegreturn = calculationengine(num, exp, whattoprint, boolveg);
+		if (num.size() == 1 and exp.size() == 0) {
+			vegreturn = std::to_string(num[0]);
+		}
 		std::cout << "Answer : " << vegreturn << std::endl;
 		historycomp(user_inputTEMP, vegreturn);
 		//veg or sveg
